@@ -627,6 +627,39 @@ textarea {
   padding:7rem 0;
   text-align:center
 }
+.whatsapp-float {
+  position:fixed;
+  right:max(1.25rem,env(safe-area-inset-right));
+  bottom:max(1.25rem,env(safe-area-inset-bottom));
+  z-index:19;
+  display:grid;
+  place-items:center;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25d366;
+  color:#fff;
+  box-shadow:0 5px 16px rgba(16,42,50,.22);
+  animation:whatsapp-enter .45s ease-out both;
+  transition:transform .2s ease,box-shadow .2s ease
+}
+.whatsapp-float svg {
+  width:32px;
+  height:32px;
+  fill:currentColor
+}
+.whatsapp-float:hover {
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 8px 20px rgba(16,42,50,.26)
+}
+.whatsapp-float:focus-visible {
+  outline:3px solid var(--ink);
+  outline-offset:4px
+}
+@keyframes whatsapp-enter {
+  from { opacity:0; transform:translateY(8px) }
+  to { opacity:1; transform:translateY(0) }
+}
 @media(max-width:900px) {
   .nav-links {
     position:absolute;
@@ -668,6 +701,16 @@ textarea {
   }
 }
 @media(max-width:600px) {
+  .whatsapp-float {
+    right:max(1rem,env(safe-area-inset-right));
+    bottom:max(1rem,env(safe-area-inset-bottom));
+    width:54px;
+    height:54px
+  }
+  .whatsapp-float svg {
+    width:30px;
+    height:30px
+  }
   .container {
     width:min(100% - 30px,1160px)
   }
@@ -710,6 +753,13 @@ textarea {
   }
   .product-detail img {
     height:330px
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .whatsapp-float {
+    animation:none;
+    transition:none
   }
 }
 

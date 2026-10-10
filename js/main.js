@@ -1,4 +1,5 @@
-const WHATSAPP = "https://wa.me/14132855423";
+const WHATSAPP_NUMBER = "14132855423";
+const WHATSAPP = `https://wa.me/${WHATSAPP_NUMBER}`;
 const PRODUCT_IMAGE_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 700'%3E%3Crect width='900' height='700' fill='%23eef4f1'/%3E%3Crect x='330' y='145' width='240' height='410' rx='24' fill='%23ffffff' stroke='%23126b67' stroke-width='10'/%3E%3Crect x='380' y='95' width='140' height='70' rx='12' fill='%23126b67'/%3E%3Crect x='365' y='275' width='170' height='100' rx='10' fill='%23d9ef8b'/%3E%3Ccircle cx='450' cy='455' r='32' fill='%23126b67' opacity='.16'/%3E%3C/svg%3E";
 
@@ -221,6 +222,24 @@ function initForm() {
   });
 }
 
+function initWhatsAppButton() {
+  if (document.querySelector(".whatsapp-float")) return;
+
+  const link = document.createElement("a");
+  link.className = "whatsapp-float";
+  link.href = WHATSAPP;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.setAttribute("aria-label", "Chat with us on WhatsApp");
+  link.title = "Chat with us on WhatsApp";
+  link.innerHTML = `
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M16 2.7A13.2 13.2 0 0 0 4.6 22.5L2.8 29l6.7-1.8A13.2 13.2 0 1 0 16 2.7Zm0 23.8c-2 0-3.9-.5-5.6-1.6l-.4-.2-4 1.1 1.1-3.9-.3-.4A10.6 10.6 0 1 1 16 26.5Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.4-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.6 4.9.8.3 1.4.6 1.9.7.8.3 1.5.3 2 .2.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5 0-.2-.3-.3-.6-.5Z" />
+    </svg>
+  `;
+  document.body.append(link);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initMenu();
   initCatalog();
@@ -228,4 +247,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initPosts();
   initForm();
   initImageFallbacks();
+  initWhatsAppButton();
 });
